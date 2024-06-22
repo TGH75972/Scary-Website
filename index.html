@@ -1,15 +1,75 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <link rel="stylesheet" href="stylesc.css">
-        <title>Scary Short Movies</title>
-        </head>
-        <body>
-            <div id="bind"><h1><span id="t1">Let Me   </span><span id="t2"> Scare You</span></h1></div>
-            <div id="bind2"><h1 id="warn">Warning! <span id="t3">Discretion Is Advised</span></h1></div>
-            <div id="box">This Website contains 10 Scary Short Films which are picked by me, some of them can be disturbing for some of the visitors. Please, proceed at your own risk!</div>
-            <button id="continue">Continue...</button>
-            <img id="clown"src="scary1.jpeg" height="300" width="250">
-            <img id="momo" src="scary3.jpg" height="300" width="600">
-        </body>
+<head>
+    <link rel="stylesheet" href="stylesc.css">
+    <title>Scary Short Movies</title>
+</head>
+<body>
+    <div id="bind">
+        <h1><span id="t1">Let Me   </span><span id="t2"> Scare You</span></h1>
+    </div>
+    <div id="bind2">
+        <h1 id="warn">Warning! <span id="t3">Discretion Is Advised</span></h1>
+    </div>
+    <div id="box">
+        This Website contains 10 Scary Short Films which are picked by me, some of them can be disturbing for some of the visitors. Please, proceed at your own risk!
+    </div>
+    <button id="continue">Continue...</button>
+    <img id="clown" src="scary1.jpeg" height="300" width="250">
+    <img id="momo" src="scary3.jpg" height="300" width="600">
+
+    <script>
+        function playSoundAndAlert() {
+            const hoverSound = new Audio('door.mp3');
+            hoverSound.currentTime = 0; 
+            hoverSound.play().then(() => {
+                const ranNum = Math.random();
+                let message = '';
+
+                if (ranNum <= 0.1) {
+                    message = 'Dare to Watch this? - https://tinyurl.com/4wkwksf8';
+                } else if (ranNum <= 0.2) {
+                    message = 'Are you ready for a scare? - https://tinyurl.com/yc77sxc7';
+                } else if (ranNum <= 0.3) {
+                    message = 'Watch at your own risk! - https://tinyurl.com/ywf5kawn';
+                } else if (ranNum <= 0.4) {
+                    message = 'Prepare to be frightened! - https://tinyurl.com/4f9zzehk';
+                } else if (ranNum <= 0.5) {
+                    message = 'Get ready to jump! - https://tinyurl.com/3f5pauta';
+                } else if (ranNum <= 0.6) {
+                    message = 'Are you brave enough? - https://tinyurl.com/ydt8nwhm';
+                } else if (ranNum <= 0.7) {
+                    message = 'Hold on tight! - https://tinyurl.com/55zajv6s';
+                } else if (ranNum <= 0.8) {
+                    message = 'Don\'t look away! - https://tinyurl.com/f8wd59ka';
+                } else if (ranNum <= 0.9) {
+                    message = 'Here comes the scare! - https://tinyurl.com/4kzhhrk9';
+                } else {
+                    message = 'Watch if you dare! - https://tinyurl.com/y596pxwz';
+                }
+
+                alert(message);
+            }).catch(error => console.log('Error playing sound:', error));
+        }
+
+        document.getElementById('clown').addEventListener('mouseover', function() {
+            const laughSound = new Audio('laugh.mp3');
+            laughSound.currentTime = 0; 
+            laughSound.play().catch(error => console.log('Error playing sound:', error));
+        });
+
+        document.getElementById('momo').addEventListener('mouseover', function() {
+            const doorslamSound = new Audio('doorslam.mp3');
+            doorslamSound.currentTime = 0; 
+            doorslamSound.play().catch(error => console.log('Error playing sound:', error));
+        });
+
+        playSoundAndAlert();
+
+        const continueButton = document.getElementById('continue');
+        if (continueButton) {
+            continueButton.addEventListener('click', playSoundAndAlert);
+        }
+    </script>
+</body>
 </html>
